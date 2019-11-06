@@ -1,0 +1,126 @@
+Récupération des sujets
+=======================
+
+1) Créer dans votre environnement utilisateur un répertoire de travail de binôme
+--------------------------------------------------------------------------------
+
+{logname@hostname} mkdir Dupond-Dupont-Piano/
+
+Copier le sujet du labo sous ce répertoire 
+{logname@hostname} cd Dupond-Dupont-Piano/
+{logname@hostname} cp -r /home/TP/modules/sujets/CAI/TkInter/2019_2020/TkInter/* .
+
+2) Vérifier le contenu du répertoire
+------------------------------------
+{logname@hostname} tree
+.
+├── Docs
+│   ├── CAI_TkInter.pdf
+│   ├── cours6-infoscipython3-v1.pdf
+│   └── tkinter_nmt.pdf
+├── frequencies.db
+├── frequencies.py
+├── frequencies.sql
+├── frequencies_V.py
+├── observer.py
+├── piano.py
+├── TODO.txt
+├── wav_audio.py
+├── wav_create-chords-0.py
+├── wav_create_note-0.py
+├── wav_create_notes_from_frequencies_db.py
+└── wav_read_note-0.py
+
+3) contenu du répertoire
+------------------------
+  - Docs : contient les notes de cours (CAI_TkInter.pdf), documentation TkInter (tkinter_nmt.pdf) et informations sur les fichiers sons au format wav.
+  - frequencies.db,frequencies.py,frequencies.sql : pour le stockage dans une BD  de la frequence des notes de gammes musicales
+  - frequencies_V.py : IHM pour la visualisation d'un son
+  - observer.py : patron de conception Observer nécessaire pour l'implémentation MVC de l'application
+  - piano.py : IHM de création d'un clavier de piano
+  - TODO.txt : ce fichier en cours de lecture !
+  - wav_*.py  : scripts python pour créer des sons au format wav, des notes musicales et des accords
+
+Sauvegarde des versions
+=======================
+
+A la fin de CHAQUE seance de labo (17:30 au plus tard)
+
+  - creer l'archive Dupond-Dupont-Piano.tgz du répertoire Dupond-Dupont-Piano/ :
+
+    {logname@hostname} cd ..
+    {logname@hostname} ls Dupond-Dupont-Piano/
+    {logname@hostname} tar zcvf Dupond-Dupont-Piano.tgz Dupond-Dupont-Piano/
+
+  - deposer cette archive de version : 
+     {logname@hostname} cp Dupond-Dupont-Piano.tgz /home/TP/TPrendu/nedelec/CAI/TkInter
+
+Le repertoire  Dupond-Dupont-Piano/ contient les fichiers : 
+     - TODO.txt
+     - README.txt (pour lancer l'application et savoir comment l'utiliser)
+     - *.py  : UNIQUEMENT ceux necessaires au lancement de l'application
+     - frequencies.db, frequencies.sql : pour  retrouver les frequences des notes de gammes musicales dans une base de données.
+
+Objectifs de l'application
+==========================
+
+Developper une application interactive pour :
+  - creer des sons
+  - les visualiser sous forme d'onde
+  - jouer les sons (notes) sur un clavier de piano sur 1 puis 2 octaves puis 3 ...
+  - apprendre a reconnaitre les notes au piano (afficher le nom des notes,visualiser la touche correspondante)
+  - creer des accords majeurs (tonalite-tierce-quinte, ex : C-E-G) a partir des notes 
+  - jouer les accords sur un clavier de piano sur 1 puis 2 octaves puis 3 ...
+  - apprendre a reconnaitre les accords au piano (afficher le nom et les notes des accords,visualiser les touches correspondantes ...) 
+
+Pour aller plus loin :
+  - apprendre a jouer des renversements d'accords !
+
+Etapes à suivre 
+===============
+
+1) Proposer et implementer une IHM pour creer des sons (notes pures puis harmoniques) au format wav.
+
+2) Proposer et implementer une IHM pour visualiser un son pur puis un son (une note) avec ses harmoniques.
+
+3) Proposer et implementer une IHM pour jouer des notes sur un clavier de piano a 1 (puis 2 puis 3...) octave(s)
+
+4) Enrichir l'IHM du piano pour :
+     - apprendre a reconnaitre les notes sur le clavier
+     - visualiser et jouer des accords au piano
+     - isualiser et jouer les accords et leur renversement
+
+Aide pour implémenter les différentes étapes à suivre
+=====================================================
+
+etape 1
+-------
+  - audio.py :  creer des fichiers au format wav pour une frequence (note) donnee (cf : Fabrice Sincere ; Jean-Claude Meilland, ...)
+  - wav_create_note-0.py : creation d'un son (note) au format wav
+  - wav_read_note-0.py : lecture  d'un son (note) au format wav
+  - wav_create_chords-0.py  :  creation d'un accord  (3 notes) au format wav 
+  - frequencies.py : stocker dans une BD la frequence des notes de gammes musicales
+  - wav_create_notes_from_frequencies_db.py : creation des notes a partir de la BD des frequences 
+
+etape 2
+-------
+  - observer.py : pour mettre en place une IHM base sur le "Design Pattern" MVC
+  - frequencies_V.py :  IHM pour visualiser les sons a adapter au "Design Pattern" MVC
+
+etapes 3 et 4
+-------------
+  - piano.py : IHM pour representer un clavier de piano en appliquant le "Design Pattern" MVC
+
+Annexes
+=======
+
+Liens utiles pour mettre en place cette application interactive :
+
+ - http://fsincere.free.fr/isn/python/cours_python_ch9.php
+ - http://freesoundeditor.com/docwave.htm
+ - http://blog.acipo.com/wave-generation-in-python
+ - https://www.tutorialspoint.com/read-and-write-wav-files-using-python-wave
+ - https://www.programcreek.com/python/example/82393/wave.open
+ - https://f5zv.pagesperso-orange.fr/RADIO/RM/RM23/RM23B/RM23B04.htm
+ - http://tpecan.free.fr/index.php?page=echantillonnage
+ 
